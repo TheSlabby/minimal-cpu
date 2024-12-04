@@ -1,0 +1,47 @@
+// tests
+// load 0 2
+// load 1 4
+// alu 0 1 add
+// save_alu 3
+// mov 3 15
+// end
+
+
+
+
+// COUNTER PROGRAM
+// load 0 5        // counter starts at 5
+// load 1 1        // set register 1 = 1 (constant)
+// load 2 0        // set register 2 = 0 (constant)
+// 
+// alu 0 1 sub
+// save_alu 0      // save alu output to register 0
+// 
+// // next, check if the counter has decremented to 0
+// alu 0 2 equals
+// save_alu 5
+// 
+// branch_if_zero 5 1             // REDO LOOP
+// 
+// load 15 1              // output number 1 to show we're done
+// end
+
+
+
+// FIBONACCI SEQUENCE
+load 0 1        // first variable
+load 1 1        // second variable
+load 2 0        // constant = 0
+
+mov 0 15        // OUTPUT CURRENT NUMBER (register 15 goes to basic_output)
+
+alu 0 1 add     // add first & second variables
+save_alu 4      // save output to the fourth register
+
+mov 1 0         // set first variable = second variable
+mov 4 1         // set second variable = current fibbonaci number
+
+branch_if_zero 2 2      // loop indefinitely (reg 0 is a constant equal to 0. therefore, this condition is always true)
+
+load 14 1               // it should never here, but if it does its bugged
+end
