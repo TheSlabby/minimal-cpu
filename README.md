@@ -57,3 +57,8 @@ end
 1010010000000100
 0011110000000010
 1111111111111111```
+
+
+### Screenshots
+![image](https://github.com/user-attachments/assets/7c95852e-6067-4a20-961d-73bd83718aa1)
+![fibbonaci_sequence_simulation](https://github.com/user-attachments/assets/1dad7d76-d7d4-497d-8e5d-f904a5b252b0)
