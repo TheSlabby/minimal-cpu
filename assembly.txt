@@ -29,19 +29,30 @@
 
 
 // FIBONACCI SEQUENCE
-load 0 1        // first variable
-load 1 1        // second variable
-load 2 0        // constant = 0
+// load 0 1        // first variable
+// load 1 1        // second variable
+// load 2 0        // constant = 0
+// 
+// mov 0 15        // OUTPUT CURRENT NUMBER (register 15 goes to basic_output)
+// 
+// alu 0 1 add     // add first & second variables
+// save_alu 4      // save output to the fourth register
+// 
+// mov 1 0         // set first variable = second variable
+// mov 4 1         // set second variable = current fibbonaci number
+// 
+// branch_if_zero 2 2      // loop indefinitely (reg 0 is a constant equal to 0. therefore, this condition is always true)
+// 
+// load 14 1               // it should never here, but if it does its bugged
+// end
 
-mov 0 15        // OUTPUT CURRENT NUMBER (register 15 goes to basic_output)
 
-alu 0 1 add     // add first & second variables
-save_alu 4      // save output to the fourth register
+// ADDITION CALCULATOR
+load_input
+load 2 0            // set register 0 to hold constant 0
+alu 13 14 add       // sum of inputs
+save_alu 0          // saved to register 0
+mov 0 15
 
-mov 1 0         // set first variable = second variable
-mov 4 1         // set second variable = current fibbonaci number
-
-branch_if_zero 2 2      // loop indefinitely (reg 0 is a constant equal to 0. therefore, this condition is always true)
-
-load 14 1               // it should never here, but if it does its bugged
+branch_if_zero 2 0      // loop indefinitely
 end

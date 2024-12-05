@@ -8,11 +8,13 @@
 module cpu(
     input clk,
     input reset,
-    output reg [7:0] AN,
-    output reg [6:0] sevenseg_out,
+    output reg [7:0] DISPLAY_AN,
+    output wire [6:0] DISPLAY_OUT,
     output reg [31:0] basic_out,
     input [7:0] input_1, // switches 0-7
     input [7:0] input_2  // switches 8-15
+    
+    
 );
     parameter WIDTH = 32; //32-bit cpu (registers are 32-bit)
     parameter FETCH_STATE = 0;
@@ -20,6 +22,37 @@ module cpu(
     parameter UPDATE_STATE = 2;
     parameter DONE_STATE = 3;
 
+
+
+
+    // SEVEN SEGMENT DISPLAY
+    reg [11:0] clk_divider = 0;
+    wire display_clock = clk_divider[11];
+    reg [2:0] display_counter;
+    reg [3:0] display_decoder_input;
+    bcd_7seg_decoder dec(.in(display_decoder_input), .out(DISPLAY_OUT));
+    always @(posedge clk) begin
+        clk_divider <= clk_divider + 1;
+    end
+    always @(posedge display_clock) begin
+        // display update logic 
+        DISPLAY_AN <= 8'b11111111;
+        if (display_counter == 0) begin
+            DISPLAY_AN <= 8'b11111110;
+            display_decoder_input <= basic_out % 10;
+            display_counter <= 1;
+       end else if (display_counter == 1) begin
+            DISPLAY_AN <= 8'b11111101;
+            display_decoder_input <= (basic_out / 10) % 10;
+            display_counter <= 2;
+       end else if (display_counter == 2) begin
+            DISPLAY_AN <= 8'b11111011;
+            display_decoder_input <= (basic_out / 100) % 10;
+            display_counter <= 0;
+       end
+    end
+    
+    
 
     // REGISTERS
     // 16 general purpose registers
@@ -45,7 +78,7 @@ module cpu(
     
     // initialize instructions
     initial begin
-        $readmemb("E:/ELEC 4200/FinalProject/finalproject/program.mem", instructions);
+        $readmemb("C:/Users/walke/Documents/VivadoProjects/FinalProject/finalproject/program.mem", instructions);
     end
     
     
@@ -82,12 +115,15 @@ module cpu(
             pc <= 0;
             STATE <= 0;
             BRANCH_SUCCESS <= 0;
+            display_counter <= 0;
+            clk_divider <= 0;
         end else begin
             case (STATE)
                 FETCH_STATE: begin
                     STATE <= EXECUTE_STATE;
                     
                     current_instruction <= instructions[pc];
+
                 end
                 
                 EXECUTE_STATE: begin
@@ -118,7 +154,9 @@ module cpu(
                         end
                         
                         3'b100: begin // LOAD INPUT (FROM FPGA BOARD SWITCHES)
-                            
+                            // update registers based on physical input
+                            registers[13] <= input_1;
+                            registers[14] <= input_2;
                         end
                         
                         3'b101: begin // CONDITIONAL BRANCH (branch if register is zero)

@@ -2,7 +2,8 @@
 2020.2
 Sep  5 2024
 15:23:16
-E:/ELEC 4200/FinalProject/finalproject/finalproject.sim/sim_1/behav/xsim/glbl.v,1708598508,verilog,,,,glbl,,,,,,,,
-E:/ELEC 4200/FinalProject/finalproject/finalproject.srcs/sim_1/new/cpu_sim.v,1733277034,verilog,,,,cpu_sim,,,,,,,,
-E:/ELEC 4200/FinalProject/finalproject/finalproject.srcs/sources_1/new/alu.v,1733276792,verilog,,E:/ELEC 4200/FinalProject/finalproject/finalproject.srcs/sources_1/new/cpu.v,,alu,,,,,,,,
-E:/ELEC 4200/FinalProject/finalproject/finalproject.srcs/sources_1/new/cpu.v,1733276500,verilog,,E:/ELEC 4200/FinalProject/finalproject/finalproject.srcs/sim_1/new/cpu_sim.v,,cpu,,,,,,,,
+C:/Users/walke/Documents/VivadoProjects/FinalProject/finalproject/finalproject.sim/sim_1/behav/xsim/glbl.v,1708598508,verilog,,,,glbl,,,,,,,,
+C:/Users/walke/Documents/VivadoProjects/FinalProject/finalproject/finalproject.srcs/sim_1/new/cpu_sim.v,1733377238,verilog,,,,cpu_sim,,,,,,,,
+C:/Users/walke/Documents/VivadoProjects/FinalProject/finalproject/finalproject.srcs/sources_1/new/7seg_decoder.v,1733376121,verilog,,C:/Users/walke/Documents/VivadoProjects/FinalProject/finalproject/finalproject.srcs/sources_1/new/alu.v,,bcd_7seg_decoder,,,,,,,,
+C:/Users/walke/Documents/VivadoProjects/FinalProject/finalproject/finalproject.srcs/sources_1/new/alu.v,1733276792,verilog,,C:/Users/walke/Documents/VivadoProjects/FinalProject/finalproject/finalproject.srcs/sources_1/new/cpu.v,,alu,,,,,,,,
+C:/Users/walke/Documents/VivadoProjects/FinalProject/finalproject/finalproject.srcs/sources_1/new/cpu.v,1733378955,verilog,,C:/Users/walke/Documents/VivadoProjects/FinalProject/finalproject/finalproject.srcs/sim_1/new/cpu_sim.v,,cpu,,,,,,,,
