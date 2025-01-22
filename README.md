@@ -1,6 +1,7 @@
 # minimal-cpu
 Basic CPU implementation in Verilog, with custom assembly language and parser.
 
+[slabby.dev](https://www.slabby.dev/blog/2024-12-04-verilog-cpu)
 
 
 ### Opcodes
